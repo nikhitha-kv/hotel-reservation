@@ -61,14 +61,14 @@ Total Travel Time = Vertical Travel + Horizontal Travel
 
 ## Project Structure
 
-hotel-reservation/
-│
-├── app.py
-├── templates/
-│ └── index.html
-├── static/
-│ └── style.css
-└── README.md
+`code`hotel-reservation/
+`code`│
+`code`├── app.py
+`code`├── templates/
+`code`│ └── index.html
+`code`├── static/
+`code`│ └── style.css
+`code`└── README.md
 
 
 ---
@@ -77,15 +77,15 @@ hotel-reservation/
 
 1. Install Flask
 
-pip install flask
+`code`pip install flask
 
 2. Run the application
 
-python app.py
+`code`python app.py
 
 3. Open the browser and visit
 
-http://127.0.0.1:5000
+`code`http://127.0.0.1:5000
 
 
 ---
