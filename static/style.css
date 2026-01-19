@@ -1,0 +1,25 @@
+body {
+    font-family: Arial;
+    text-align: center;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+.hotel {
+    display: grid;
+    grid-template-columns: repeat(10, 60px);
+    gap: 8px;
+    justify-content: center;
+}
+
+.room {
+    border: 1px solid #333;
+    padding: 10px;
+    background: #e0ffe0;
+}
+
+.occupied {
+    background: #ffb3b3;
+}
