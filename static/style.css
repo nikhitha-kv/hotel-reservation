@@ -1,25 +1,213 @@
 body {
-    font-family: Arial;
+    font-family: Arial, sans-serif;
+    background: #f4f6fa;
     text-align: center;
+    margin: 0;
+    padding: 20px;
 }
 
-.controls {
-    margin-bottom: 20px;
+.card {
+    background: white;
+    width: 430px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.card input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.buttons button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    flex: 1;
+    max-width: 120px;
+}
+
+.buttons button[value="book"] {
+    background: #28a745;
+    color: white;
+}
+
+.buttons button[value="random"] {
+    background: #007bff;
+    color: white;
+}
+
+.buttons button[value="reset"] {
+    background: #6c757d;
+    color: white;
+}
+
+.buttons button:hover {
+    opacity: 0.9;
+}
+
+.msg {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.msg.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.legend {
+    margin: 20px auto;
+    max-width: 430px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-weight: bold;
+}
+
+.box {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #333;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.box.free {
+    background: #d9ffd9;
+}
+
+.box.busy {
+    background: #ffb3b3;
+}
+
+.box.new {
+    background: #2b6cff;
 }
 
 .hotel {
-    display: grid;
-    grid-template-columns: repeat(10, 60px);
-    gap: 8px;
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+.floor {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.label {
+    min-width: 80px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+    padding-right: 15px;
+}
+
+.rooms {
+    display: flex;
+    flex: 1;
     justify-content: center;
+    gap: 8px;
+    min-height: 60px;
 }
 
 .room {
-    border: 1px solid #333;
-    padding: 10px;
-    background: #e0ffe0;
+    width: 65px;
+    height: 55px;
+    padding: 8px;
+    border: 2px solid #333;
+    background: #d9ffd9;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
 }
 
-.occupied {
-    background: #ffb3b3;
+.room:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.busy {
+    background: #ffb3b3 !important;
+    color: #721c24;
+}
+
+.new {
+    background: #2b6cff !important;
+    color: white;
+    animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card {
+        width: 90%;
+        margin: 10px auto;
+    }
+    
+    .buttons {
+        flex-direction: column;
+    }
+    
+    .legend {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .rooms {
+        gap: 4px;
+    }
+    
+    .room {
+        width: 50px;
+        height: 45px;
+        font-size: 12px;
+        padding: 6px;
+    }
+    
+    .label {
+        min-width: 60px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .room {
+        width: 45px;
+        height: 40px;
+        font-size: 11px;
+    }
 }

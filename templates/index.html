@@ -2,46 +2,56 @@
 <html>
 <head>
     <title>Hotel Room Reservation</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
 <h2>Hotel Room Reservation System</h2>
 
-<div class="controls">
-    <input type="number" id="count" placeholder="No of rooms (1-5)">
-    <button onclick="book()">Book</button>
-    <button onclick="resetAll()">Reset</button>
-    <button onclick="randomFill()">Random</button>
+<form method="post" class="card">
+
+    <input type="number"
+           name="count"
+           placeholder="Enter number of rooms (1–5)">
+
+    <div class="buttons">
+        <button name="action" value="book">Book</button>
+        <button name="action" value="random">Random</button>
+        <button name="action" value="reset">Reset</button>
+    </div>
+
+    {% if msg %}
+        <p class="msg {{ msg_type }}">{{ msg }}</p>
+    {% endif %}
+</form>
+
+<div class="legend">
+    <span class="box free"></span> Available
+    <span class="box busy"></span> Occupied
+    <span class="box new"></span> Newly booked
 </div>
 
 <div class="hotel">
-    {% for r in rooms %}
-        <div class="room {% if r.occupied %}occupied{% endif %}">
-            {{ r.room }}
+{% for floor in range(10, 0, -1) %}
+    <div class="floor">
+        <div class="label">Floor {{ floor }}</div>
+
+        <div class="rooms">
+            {% for r in rooms %}
+                {% if r.floor == floor %}
+                    <div class="room
+                        {% if r.just_booked %}new{% endif %}
+                        {% if r.occupied %}busy{% endif %}">
+                        {{ r.room }}
+                    </div>
+                {% endif %}
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
+{% endfor %}
 </div>
-
-<script>
-function book() {
-    const count = document.getElementById("count").value;
-
-    fetch("/book", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({count: count})
-    }).then(() => location.reload());
-}
-
-function resetAll() {
-    fetch("/reset", {method: "POST"}).then(() => location.reload());
-}
-
-function randomFill() {
-    fetch("/random", {method: "POST"}).then(() => location.reload());
-}
-</script>
 
 </body>
 </html>
